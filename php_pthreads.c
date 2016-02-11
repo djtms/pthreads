@@ -252,12 +252,6 @@ PHP_MINIT_FUNCTION(pthreads)
 {
 	zend_class_entry ce;
 
-	if (!pthreads_is_supported_sapi(sapi_module.name)) {
-		zend_error(E_ERROR, "The %s SAPI is not supported by pthreads",
-			sapi_module.name);
-		return FAILURE;
-	}
-
 	zend_execute_ex_hook = zend_execute_ex;
 	zend_execute_ex = pthreads_execute_ex;	
 
